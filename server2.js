@@ -29,22 +29,18 @@ function listening() {
     console.log(`running on localhost: ${port}`);
 };
 
-
 // POST route
-app.post('/', (req, res) => {
+app.post('/', function (req, res) {
     projectData.date = req.body.date;
     projectData.temperature = req.body.main.temp;
     projectData.feelings = req.body.feelings;
     console.log('POST request received');
-    res.end();
+    res.send({});
 });
 
-
-
-
 // GET route returns projectData
-app.get('/all', function (request, response) {
-    response.send(projectData);
+app.get('/all', function (req, res) {
+    res.send(projectData);
     console.log('GET request received')
 });
 
